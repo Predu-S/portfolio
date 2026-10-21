@@ -10,7 +10,7 @@ export default function ProjectsSection() {
           <article className="project-card">
             <div className="project-card-content">
               <p className="project-card-type">Dashboard · Web</p>
-              <h3>Dashboard WMS</h3>
+              <h3>Dashboard Demo</h3>
               <p className="project-card-description">
                 Painel de BI para acompanhar a ocupação de armazéns.
               </p>
