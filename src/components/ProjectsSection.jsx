@@ -23,7 +23,7 @@ export default function ProjectsSection() {
                 <li>Firebird</li>
               </ul>
               <div className="project-card-actions">
-                <a href="https://dashboardwms.netlify.app" target="_blank" rel="noopener noreferrer">
+                <a href="https://projectdemo-dashboard.netlify.app" target="_blank" rel="noopener noreferrer">
                   Ver demonstração <span aria-hidden="true">↗</span>
                 </a>
               </div>
