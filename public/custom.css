@@ -95,10 +95,60 @@
 .netlify-form-status { min-height: 1.5em; margin: 0; color: #454747; font-size: 14px; line-height: 1.5; }
 .portfolio-page-contato #main .framer-xgs7f1 button[type="submit"]:disabled { cursor: wait; opacity: .7; }
 
+.contact-direct-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.contact-direct-link {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 18px;
+  border: 1px solid #1a1c1c;
+  border-radius: 10px;
+  color: #1a1c1c;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color .2s ease, color .2s ease, transform .2s ease;
+}
+
+.contact-direct-link:hover { transform: translateY(-2px); }
+.contact-direct-link-whatsapp:hover { border-color: #168c4b; background: #168c4b; color: #fff; }
+.contact-direct-link-instagram:hover { border-color: #a43e79; background: #a43e79; color: #fff; }
+
+.skill-additions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 36px auto 0;
+  padding: 0 20px 32px;
+}
+
+.skill-additions span {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  padding: 0 18px;
+  border: 1px solid rgb(198 198 198 / 45%);
+  border-radius: 999px;
+  background: #262626;
+  color: #e2e2e2;
+  font-size: 15px;
+  font-weight: 600;
+}
+
 @media (max-width: 809.98px) {
   .portfolio-page-contato #main .framer-k41id { padding: 24px 16px !important; }
   .portfolio-page-contato #main .framer-1ygc04z { min-height: 0; padding: 28px 20px !important; }
   .portfolio-page-contato #main .framer-p30lun { grid-template-columns: minmax(0, 1fr); gap: 28px !important; }
+  .contact-direct-links { display: grid; grid-template-columns: 1fr; }
 }
 
 .projects-section-inner {
