@@ -131,18 +131,22 @@
   padding: 0 20px 32px;
 }
 
-.skill-additions span {
+.skill-addition {
   display: inline-flex;
-  min-height: 42px;
+  min-height: 64px;
   align-items: center;
-  padding: 0 18px;
+  gap: 12px;
+  padding: 0 20px;
   border: 1px solid rgb(198 198 198 / 45%);
-  border-radius: 999px;
+  border-radius: 14px;
   background: #262626;
   color: #e2e2e2;
   font-size: 15px;
   font-weight: 600;
 }
+
+.skill-addition-icon { display: block; width: 32px; height: 32px; object-fit: contain; }
+.skill-addition-icon-codex { filter: brightness(0) invert(1); }
 
 @media (max-width: 809.98px) {
   .portfolio-page-contato #main .framer-k41id { padding: 24px 16px !important; }
