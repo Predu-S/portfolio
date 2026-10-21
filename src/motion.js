@@ -30,13 +30,26 @@ function setupNetlifyContactForm() {
     status.textContent = 'Enviando…';
 
     try {
-      const body = new URLSearchParams(new FormData(form)).toString();
+      const fields = new FormData(form);
+      const subject = form.querySelector('input[name="subject"]')?.value.trim() ?? '';
+      const message = form.querySelector('textarea[name="message"]')?.value.trim() ?? '';
+      if (!subject || !message) {
+        status.textContent = 'Preencha o assunto e a mensagem antes de enviar.';
+        return;
+      }
+      fields.set('subject', subject);
+      fields.set('message', message);
+      const body = new URLSearchParams(fields).toString();
       const response = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body,
       });
       if (!response.ok) throw new Error('Falha ao enviar o formulário.');
+      const result = await response.text();
+      if (/form-name|name="contact"/i.test(result) && /subject|message/i.test(result)) {
+        throw new Error('O Netlify devolveu a página do formulário.');
+      }
       form.reset();
       status.textContent = 'Mensagem enviada. Obrigado pelo contato!';
     } catch {
