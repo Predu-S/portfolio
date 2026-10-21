@@ -1,0 +1,12 @@
+SITE EXPORTADO EM REACT
+
+Para visualizar: execute START-SITE.bat e abra http://localhost:3000.
+Para editar: instale Node.js 20+, execute npm install e npm run dev.
+Depois de editar, execute npm run build. START-SITE.bat serve a pasta dist.
+
+Textos, imagens e links: src/content.js
+Seções e estrutura: src/components/
+Estilos originais: public/site.css
+Ajustes de estilo: public/custom.css
+
+Este projeto não executa a hidratação do Framer. Alterações no React não serão revertidas por bundles do Framer.

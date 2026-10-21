@@ -1,0 +1,1 @@
+export function cssStyle(css){if(!css)return undefined;const el=document.createElement('span');el.style.cssText=css;const out={};for(const key of el.style){const reactKey=key.startsWith('--')?key:key.replace(/-([a-z])/g,(_,c)=>c.toUpperCase());out[reactKey]=el.style.getPropertyValue(key)}return out}
