@@ -92,6 +92,8 @@
 .portfolio-page-contato #main .framer-p30lun { display: grid !important; grid-template-columns: minmax(0, 1.1fr) minmax(260px, .9fr); gap: clamp(28px, 5vw, 64px) !important; width: min(100%, 1080px) !important; max-width: 1080px !important; flex: 0 1 1080px !important; align-items: center !important; }
 .portfolio-page-contato #main .framer-xgs7f1,
 .portfolio-page-contato #main .framer-1pqjdn0 { box-sizing: border-box; width: 100% !important; min-width: 0; }
+.netlify-form-status { min-height: 1.5em; margin: 0; color: #454747; font-size: 14px; line-height: 1.5; }
+.portfolio-page-contato #main .framer-xgs7f1 button[type="submit"]:disabled { cursor: wait; opacity: .7; }
 
 @media (max-width: 809.98px) {
   .portfolio-page-contato #main .framer-k41id { padding: 24px 16px !important; }

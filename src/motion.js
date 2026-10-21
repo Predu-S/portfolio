@@ -1,6 +1,58 @@
 export function setupExportMotion() {
-  const cleanups = [setupCanvasFrames(), setupCapturedTimelines(), setupMarquees(), setupPulsingDots(), setupRotatingWords(), setupScrollNavVariants(), setupCapturedScrollStates(), setupEntryVariants(), setupCardVariants(), setupScrollProgressLines(), setupRotatingLogo(), setupComparisonSliders(), setupPolygonComparisons(), setupServiceCardHover(), setupCapturedHover()];
+  const cleanups = [setupCanvasFrames(), setupCapturedTimelines(), setupMarquees(), setupPulsingDots(), setupRotatingWords(), setupScrollNavVariants(), setupCapturedScrollStates(), setupEntryVariants(), setupCardVariants(), setupScrollProgressLines(), setupRotatingLogo(), setupComparisonSliders(), setupPolygonComparisons(), setupServiceCardHover(), setupCapturedHover(), setupNetlifyContactForm()];
   return () => cleanups.forEach(cleanup => cleanup());
+}
+
+function setupNetlifyContactForm() {
+  const form = document.querySelector('form[data-netlify="true"][name="contact"]');
+  if (!form || form.dataset.netlifyReady) return () => {};
+  form.dataset.netlifyReady = 'true';
+
+  let status = form.querySelector('[data-netlify-status]');
+  if (!status) {
+    status = document.createElement('p');
+    status.className = 'netlify-form-status';
+    status.dataset.netlifyStatus = '';
+    status.setAttribute('role', 'status');
+    status.setAttribute('aria-live', 'polite');
+    form.append(status);
+  }
+
+  const submit = async event => {
+    event.preventDefault();
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      status.textContent = 'O envio será ativado depois da publicação no Netlify.';
+      return;
+    }
+
+    const button = form.querySelector('button[type="submit"]');
+    if (button) button.disabled = true;
+    status.textContent = 'Enviando…';
+
+    try {
+      const body = new URLSearchParams(new FormData(form)).toString();
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body,
+      });
+      if (!response.ok) throw new Error('Falha ao enviar o formulário.');
+      form.reset();
+      status.textContent = 'Mensagem enviada. Obrigado pelo contato!';
+    } catch {
+      status.textContent = 'Não foi possível enviar agora. Tente novamente em instantes.';
+    } finally {
+      if (button) {
+        button.disabled = false;
+      }
+    }
+  };
+
+  form.addEventListener('submit', submit);
+  return () => {
+    form.removeEventListener('submit', submit);
+    delete form.dataset.netlifyReady;
+  };
 }
 
 function setupMarquees() {
